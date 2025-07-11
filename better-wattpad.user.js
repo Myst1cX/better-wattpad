@@ -307,6 +307,20 @@ var userPreferenceAdditionalPaddingPX = "0"; // Optional additional padding on t
         h1.h2 {
             margin: 5px 30px !important;  /* Tweak title spacing */
         }
+
+        /* Center the story text in pre elements within reading panels */
+        .panel-reading.panel > pre {
+            display: block !important;
+            margin: 0 auto !important;
+            max-width: 680px !important;
+            width: 100% !important;
+            text-align: left !important;
+            white-space: pre-wrap !important;
+            word-break: break-word !important;
+            background: none !important;
+            border: none !important;
+            padding: 0 !important;
+        }
     `);
 
     // Move author info box to top of page
@@ -326,13 +340,24 @@ var userPreferenceAdditionalPaddingPX = "0"; // Optional additional padding on t
         }
     }
 
+    // Apply additional centering for pre elements within reading panels
+    function centerStoryText() {
+        const preElements = document.querySelectorAll('.panel-reading.panel > pre');
+        if (preElements.length > 0) {
+            // CSS is already injected globally, but we can verify elements exist
+            console.log('Found', preElements.length, 'story text pre elements to center');
+        }
+    }
+
     moveAuthorDetails(); // Initial move
+    centerStoryText(); // Initial centering check
 
     // Re-run when DOM changes (e.g. new chapter loads)
     const observer = new MutationObserver((mutationsList) => {
         for (const mutation of mutationsList) {
             if (mutation.type === 'childList') {
                 moveAuthorDetails();
+                centerStoryText();
             }
         }
     });
