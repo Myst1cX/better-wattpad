@@ -101,6 +101,7 @@ function updateReadingLayout() {
             box-sizing: border-box !important;
             word-break: break-word !important;
             display: block !important;
+            text-align: center !important;
         }
         .restart-part.on-navigate,
         .on-navigate.restart-part {
