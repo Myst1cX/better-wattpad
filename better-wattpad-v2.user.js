@@ -27,6 +27,9 @@
 
      // ========== RESPONSIVE READING AREA ==========
 
+// In attempt to unite text paragraph width for both the standard reading and "start from beginning" reading 
+// under the line that separates chapter name and story text, the updateReaadingLayout method was created.
+
 // Replace all .meta with a .restart-part.on-navigate, preserving content and copying computed style for visibility.
     function copyComputedStyle(src, dest) {
         const computed = window.getComputedStyle(src);
@@ -323,7 +326,7 @@ window.addEventListener('load', () => {
 (function() {
     'use strict';
 
-    var userPreferenceAdditionalPaddingPX = "0"; // Optional additional padding on the right margin
+    var userPreferenceAdditionalPaddingPX = "0"; /* Optional additional padding on the right margin; not using at the moment */
 
     // Waits for a specific element to load, then runs the callback
     const waitForElement = (selector, callback, interval = 100, timeout = 10000) => {
